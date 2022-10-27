@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background-color:black;
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.navbar a:hover{
+    background-color: white;
+    color:black;
+}
+#content {
+    margin:40px;
+}
+.messages p {
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 3px 5px rgba(0,0,0, .2);
+}
+.messages .success {
+    background-color: rgba(0,255,0,0.1);
+}
+.messages .error {
+    background-color: rgba(255,0,0,0.1);
+}
+
+.btn {
+    width: 60px;
+    height: 30px;
+    margin: 0 auto;
+    border: none;
+    border-style: none;
+    border: solid 1px;
+    border-radius: 10px;
+    color: white;
+}
+.submit {
+    background-color: rgb(93, 194, 93)
+}
+.delete {
+    background-color: rgb(202, 56, 56)
+}
+.edit {
+    background-color: rgb(31, 103, 197)
+}
+.form-edit {
+    display: inline-block;
+}
+.form-delete {
+    display: inline-block;
+}
+.profilepic {
+    display: inline-block;
+    padding-right: 30px;
+    width : 100px;
+    height: 100px;
+    object-fit: fill;
+}
+.photoblock {
+    display: inline-block;
+}
+.details {
+    display: inline-block;
+    position: relative;
+    bottom: 40px;
+}
+h1 {
+    display: inline-block;
+    border: none;
+    margin: 0;
+}

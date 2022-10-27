@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Blogly{% endblock %}
+{% block content %} 
+
+    
+<div>
+    <div class="photoblock">
+        <img  src="{{user.image_url}}" alt="user-profile-pic" class="profilepic">
+    </div>
+    <div class="details">
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+        <div class="buttons">
+        <form action="/users/{{user.id}}/edit" class="form-edit">
+            <input type="submit" class="btn edit" value="Edit">
+        </form>
+        <form action="/users/{{user.id}}/delete" method="POST" class="form-delete">
+            <input type="submit" class="btn delete" value="Delete">
+        </form>
+    </div>
+    </div>
+    
+</div>
+
+    
+    
+  
+
+     
+    
+{% endblock %}
