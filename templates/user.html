@@ -3,28 +3,48 @@
 {% block content %} 
 
     
-<div>
-    <div class="photoblock">
+<div class="container-main">
+    <div class="left">
+        <div class="photoblock">
         <img  src="{{user.image_url}}" alt="user-profile-pic" class="profilepic">
     </div>
     <div class="details">
         <h1>{{user.first_name}} {{user.last_name}}</h1>
-        <div class="buttons">
-        <form action="/users/{{user.id}}/edit" class="form-edit">
-            <input type="submit" class="btn edit" value="Edit">
-        </form>
-        <form action="/users/{{user.id}}/delete" method="POST" class="form-delete">
-            <input type="submit" class="btn delete" value="Delete">
-        </form>
-    </div>
+            <div class="userbuttons">
+                <form action="/users/{{user.id}}/edit" class="form-edit">
+                    <input type="submit" class="btn edit" value="Edit">
+                </form>
+                <form action="/users/{{user.id}}/delete" method="POST" class="form-delete">
+                    <input type="submit" class="btn delete" value="Delete">
+                </form>
+                <form action="/users/{{user.id}}/posts/new" class="form-addpost">
+                    <input type="submit" class="btn submit" value="Add Post">
+                </form>
+                
+            </div>
     </div>
     
+        <section class="posts">
+            
+            <h3>Posts</h3>
+            <ul>
+                {% for p in post %}
+                <li><a href="/posts/{{p.id}}">{{p.title}}</a></li>
+                {% endfor %}
+            </ul>
+            
+            
+        </section>
+    </div>
+    <section class="showposts">
+    <h2>All Posts</h2>
+    {% for p in post %}
+    <p class="title">{{p.title}}</p>
+    <p class="post-content">{{p.content}}</p>
+    <hr>
+    {% endfor %}
+</section>
 </div>
 
-    
-    
   
-
-     
-    
 {% endblock %}

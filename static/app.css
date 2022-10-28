@@ -36,7 +36,7 @@ body {
 }
 
 .btn {
-    width: 60px;
+    width: 70px;
     height: 30px;
     margin: 0 auto;
     border: none;
@@ -46,13 +46,17 @@ body {
     color: white;
 }
 .submit {
-    background-color: rgb(93, 194, 93)
+    background-color: rgb(31, 103, 197)
 }
 .delete {
     background-color: rgb(202, 56, 56)
 }
 .edit {
-    background-color: rgb(31, 103, 197)
+    background-color: rgb(93, 194, 93)
+}
+.cancel {
+    background-color: rgb(255, 255, 255);
+    color: rgb(31, 103, 197);
 }
 .form-edit {
     display: inline-block;
@@ -62,9 +66,10 @@ body {
 }
 .profilepic {
     display: inline-block;
+    position: relative;
     padding-right: 30px;
-    width : 100px;
-    height: 100px;
+    width : 130px;
+    height: 130px;
     object-fit: fill;
 }
 .photoblock {
@@ -73,10 +78,37 @@ body {
 .details {
     display: inline-block;
     position: relative;
-    bottom: 40px;
+    width: 40%;
+    bottom: 15px;
+    
 }
 h1 {
     display: inline-block;
     border: none;
     margin: 0;
+}
+.container-main {
+    display: flex;
+}
+
+.post-content {
+    display: block;
+    resize: none;
+}
+.buttons {
+    display: flex;
+}
+.showposts {
+    padding-left: 15px;
+    width: 60%;
+}
+.left {
+    width: 20%;
+    height: 100%;
+   
+}
+.userbuttons {
+    display: flex;
+    width: 200px;
+    padding-top: 15px;
 }
