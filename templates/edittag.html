@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Blogly{% endblock %}
+{% block content %} 
+
+    <h1>Edit a tag</h1>
+    <div>
+        <p><form action="/tags/{{tag.id}}/edit" method="POST">
+        <label for="name">Name:</label>
+            <input type="text" name="tag" placeholder="" value="{{tag.name}}"> </p>
+            
+            <label for="tags_ul" class="title">Assign tag to posts:</label>         
+            <ul class="tags_ul">
+                {% for post in posts %}
+                <li>
+                <input type="checkbox" name="tag_post" id="tag_post" {% if tag in post.tags %} checked {% endif %} value="{{post.id}}">
+                <label for="{{post.id}}">{{post.title}}</label>  
+                </li>  
+                {% endfor %}
+            </ul>
+            
+            <div class="tagbtns">
+                <button class="btn submit">Submit</button>
+                </form>
+                 <form action="/tags" class="tagcancel">
+                <input type="submit" class="btn cancel" value="Cancel">
+            </form>
+            </div>
+    </form>
+
+{% endblock %}

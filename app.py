@@ -20,7 +20,9 @@ db.create_all()
 @app.route("/")
 def home_page():
     """Home"""
-    return redirect("/users")
+    posts = Post.query.all()
+    tags = Tag.query.all()
+    return render_template("/home.html", posts=posts, tags=tags)
 
 @app.route("/users")
 def list_users():
@@ -155,16 +157,23 @@ def show_tags_page():
 @app.route("/tags/new")
 def add_tags_page():
     """render page to create new tag"""
-    return render_template('addtag.html')
+    posts = Post.query.all()
+    return render_template('addtag.html', posts = posts)
 
 @app.route("/tags/new", methods=['POST'])
 def create_new_tag():
     """create new tag"""
     tag_name = request.form["tag"]
-    tag = Tag(name=tag_name)
+    new_tag = Tag(name=tag_name)
 
-    db.session.add(tag)
+    db.session.add(new_tag)
     db.session.commit()
+    tag = Tag.query.filter_by(name=tag_name).first()
+    posts = [post_id for post_id in request.form.getlist("tag_post")]
+    for post_id in posts:
+        post = Post.query.get(post_id)
+        post.tags.append(tag)
+    db.session.commit() 
     return redirect("/tags")
 
 @app.route("/tags/<int:tag_id>")
@@ -178,7 +187,8 @@ def show_posts_by_tag(tag_id):
 def edit_tags_load(tag_id):
     """renders edit tag page"""
     tag = Tag.query.get(tag_id)
-    return render_template("edittag.html", tag=tag)
+    posts = Post.query.all()
+    return render_template("edittag.html", tag=tag, posts=posts)
 
 @app.route("/tags/<int:tag_id>/edit", methods=["POST"])
 def edit_tags(tag_id):

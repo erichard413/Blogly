@@ -162,3 +162,7 @@ h1 {
 .tagsbtns {
     display: inline-block;
 }
+.tags_ul {
+    list-style-type: none;
+    padding-left: 0px;
+}

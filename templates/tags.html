@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Blogly{% endblock %}
+{% block content %} 
+<label for="tags">
+    <h1>Tags</h1>
+</label>   
+
+    <ul name="tags">
+        {% for tag in tags %}
+        <li><a href="/tags/{{tag.id}}">{{tag.name}}</a>
+            <form action="/tags/{{tag.id}}/edit" class="tagsbtns">
+                <input type="submit" class="tagbtnedit" value="Edit">
+            </form>
+            <form action="/tags/{{tag.id}}/delete" method="POST" class="tagsbtns">
+                <input type="submit" class="tagbtndelete" value="Delete">
+            </form>
+        </li>
+        {% endfor %}
+    </ul> 
+    <p>
+        <form action="/tags/new">
+            <input type="submit" class="btn submit" value="New Tag">
+        </form>
+    </p> 
+    
+{% endblock %}

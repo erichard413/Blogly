@@ -1,14 +1,27 @@
 {% extends 'base.html' %}
 {% block title %}Blogly{% endblock %}
 {% block content %} 
-<label for="users">
-    <h1>Users</h1>
-</label>   
+ 
 
-    <ul name="users">
-        {% for user in users %}
-        <li><a href="/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></li>
-        {% endfor %}
-    </ul>  
+<section>
+    <h2>All Blog Posts</h2>
+    {% for p in posts %}
+    <p class="title">{{p.title}}</p>
+    <p class="post-content">{{p.content}}</p>
+    <p class="author">By <a href="/users/{{p.user.id}}">{{p.user.first_name}} {{p.user.last_name}}</a></p>
+    {% if p.tags %}
+    <section class="tagsbtns">
+    <b>Tags:</b> 
+    {% for tag in p.tags %}
+    <form action="/tags/{{tag.id}}" class="tagsbtns">
+        <input type="submit" class="tagbtn" value="{{tag.name}}">
+    </form>
     
+    {% endfor %}
+    {% endif %}
+</section>
+    <hr>  
+    {% endfor %}
+
+  
 {% endblock %}
