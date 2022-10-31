@@ -7,6 +7,12 @@
         <p><form action="/posts/{{post.id}}/edit" method="POST">
         <p><label for="title">Title</label></p>
             <input type="text" name="title" placeholder="" value="{{post.title}}"> </p>
+
+            <p class="title">Tags</p>
+            {% for tag in tags %}
+            <input type="checkbox" name="tags" id="tag_{{tag.id}}" {% if tag in post.tag %} checked {% endif %} value="{{tag.id}}">
+            <label for="{{tag.id}}">{{tag.name}}</label>    
+            {% endfor %}
     
         <p><label for="content">Content</label>
             <textarea rows="10" cols="80" name="content" class="post-content">{{post.content}}</textarea>

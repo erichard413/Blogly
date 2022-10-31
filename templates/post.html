@@ -4,8 +4,21 @@
 <main>
     <h1>{{post.title}}</h1>
     <p>{{post.content}}</p>
-    <p><i>By {{user.first_name}} {{user.last_name}}</i></p>
+    <p><i>By <a href="/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></i></p>
+    {% if post.tags %}
+    <section class="tagsbtns">
+    <b>Tags:</b> 
+    {% for tag in post.tags %}
+    <form action="/tags/{{tag.id}}" class="tagsbtns">
+        <input type="submit" class="tagbtn" value="{{tag.name}}">
+    </form>
+    
+    {% endfor %}
+    {% endif %}
     <p>
+
+    </section>
+    
     <div class="buttons">
         <form action="/users/{{user.id}}">
             <input type="submit" class="btn cancel" value="Back">
